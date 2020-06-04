@@ -1,11 +1,15 @@
-import Home from '../Home'
+import React from "react";
+import { BrowserRouter as Route } from "react-router-dom";
 
-let router = [
-    {
-        path: '/',
-        componentName: Home,
-        exact: true
-    }
-]
+function RouteWithSubRoutes(route) {
+    return (
+        <Route
+            path={route.path}
+            render={props => (
+                <route.component {...props} routes={route.routes} />
+            )}
+        />
+    );
+}
 
-export default router
+export default RouteWithSubRoutes

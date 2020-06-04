@@ -1,23 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import router from './router/router';
+import RouteWithSubRoutes from './router/router'
+import { BrowserRouter as Switch } from "react-router-dom";
+import routes from './router/routes'
 
 function App() {
   return (
-    <Router>
-        <div className="App">
-          {
-            router.map(({path, componentName, exact = true, routes = []}, key) => {
-                return <Route
-                          exact={exact}
-                          key={key}
-                          path={path}
-                          component={componentName}
-                        />
-            })
-          }
-        </div>
-      </Router>
+    <Switch>
+      {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route} />
+      ))}
+    </Switch>
   );
 }
 
