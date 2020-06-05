@@ -2,8 +2,10 @@ import { Layout, Menu } from 'antd';
 import { MessageOutlined } from '@ant-design/icons';
 import React from 'react';
 import './style.less'
-import MessageList from '../../pages/Model/MessageList'
-
+import RouteWithSubRoutes from './../../router/routeWithSubRoutes'
+import { BrowserRouter as Switch } from "react-router-dom";
+import { routerChange } from './../../utils/util'
+const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 class App extends React.PureComponent {
@@ -15,6 +17,7 @@ class App extends React.PureComponent {
     }
 
     render () {
+        const { routes } = this.props
         return (
             <div className="page">
                 <Layout>
@@ -25,13 +28,24 @@ class App extends React.PureComponent {
                         <Sider width={200} className="site-layout-background">
                             <Menu
                                 mode="inline"
-                                defaultSelectedKeys={['1']}
+                                defaultSelectedKeys={['7']}
                                 defaultOpenKeys={['sub1']}
                                 style={{ height: '100%', borderRight: 0 }}
                             >
-                                <Menu.Item key="1" icon={<MessageOutlined />}>
-                                    模板消息
-                                </Menu.Item>
+                                <SubMenu key="sub1" title="模板消息">
+                                    <Menu.Item
+                                        key="7"
+                                        onClick={() => {
+                                            routerChange('/pages/list')
+                                        }}
+                                    >我的模板</Menu.Item>
+                                    <Menu.Item
+                                        key="8"
+                                        onClick={() => {
+                                            routerChange('/pages/model')
+                                        }}
+                                    >模板库</Menu.Item>
+                                </SubMenu>
                             </Menu>
                         </Sider>
                         <Layout style={{ padding: '0 24px 24px' }}>
@@ -43,7 +57,11 @@ class App extends React.PureComponent {
                                     minHeight: 280,
                                 }}
                             >
-                                <MessageList />
+                                <Switch>
+                                    {routes.map((route, i) => (
+                                        <RouteWithSubRoutes key={i} {...route} />
+                                    ))}
+                                </Switch>
                             </Content>
                         </Layout>
                     </Layout>

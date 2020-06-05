@@ -1,16 +1,20 @@
-import Home from '../pages/Home'
-import MessageList from '../pages/Model/MessageList'
+import React from 'react';
+import Home from '../pages/Home';
+import MessageList from '../pages/Model/MessageList';
+
 let routes = [
     {
-        path: '/pages',
+        path: '/',
         component: Home,
         routes: [
             {
-                path: '/pages/home',
-                component: MessageList,
-            }
-        ]
-    }
+                path: '/pages/list',
+                component: MessageList
+            },
+            { path: '/pages/model', component: () => <div>1213123123</div> }
+        ],
+    },
+    { path: '/login', component: () => <div>login</div> }
 ]
 
-export default routes
+export default routes;

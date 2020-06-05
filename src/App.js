@@ -1,9 +1,13 @@
 import React from 'react';
-import RouteWithSubRoutes from './router/router'
+import RouteWithSubRoutes from './router/routeWithSubRoutes';
 import { BrowserRouter as Switch } from "react-router-dom";
 import routes from './router/routes'
 
 function App() {
+  // let {href, origin} = window.location;
+  // if(href == `${origin}/`){
+  //   window.location = `${href}pages`;
+  // }
   return (
     <Switch>
       {routes.map((route, i) => (
