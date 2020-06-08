@@ -3,17 +3,22 @@ import { MessageOutlined } from '@ant-design/icons';
 import React from 'react';
 import './style.less'
 import RouteWithSubRoutes from './../../router/routeWithSubRoutes'
-import { BrowserRouter as Switch } from "react-router-dom";
-import { routerChange } from './../../utils/util'
+import { BrowserRouter as Switch, withRouter } from "react-router-dom";
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-class App extends React.PureComponent {
+class Home extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
 
         }
+    }
+    
+    routerChange = (url) => {
+        console.log(this.props)
+        this.props.history.push(url)
     }
 
     render () {
@@ -35,15 +40,11 @@ class App extends React.PureComponent {
                                 <SubMenu key="sub1" title="模板消息">
                                     <Menu.Item
                                         key="7"
-                                        onClick={() => {
-                                            routerChange('/pages/list')
-                                        }}
+                                        onClick={() => this.routerChange('/pages/list')}
                                     >我的模板</Menu.Item>
                                     <Menu.Item
                                         key="8"
-                                        onClick={() => {
-                                            routerChange('/pages/model')
-                                        }}
+                                        onClick={() => this.routerChange('/pages/model')}
                                     >模板库</Menu.Item>
                                 </SubMenu>
                             </Menu>
@@ -70,4 +71,4 @@ class App extends React.PureComponent {
         )
     }
 }
-export default App
+export default withRouter(Home)

@@ -37,17 +37,17 @@ class MessageList extends React.PureComponent {
                 {
                     key: '134325445',
                     index: '1',
-                    title: 'New York No. 1 Lake Park'
+                    title: '发货通知'
                 },
                 {
                     key: '278978434',
                     index: '2',
-                    title: 'London No. 1 Lake Park'
+                    title: '积分获得提醒'
                 },
                 {
                     key: '345254566',
                     index: '3',
-                    title: 'Sidney No. 1 Lake Park'
+                    title: '注册审核提醒'
                 },
             ]
         }

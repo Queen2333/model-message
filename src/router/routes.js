@@ -6,12 +6,18 @@ let routes = [
     {
         path: '/',
         component: Home,
+        exact: true,
         routes: [
             {
                 path: '/pages/list',
-                component: MessageList
+                component: MessageList,
+                exact: true
             },
-            { path: '/pages/model', component: () => <div>1213123123</div> }
+            {
+                path: '/pages/model',
+                component: () => <div>1213123123</div>,
+                exact: true
+            }
         ],
     },
     { path: '/login', component: () => <div>login</div> }

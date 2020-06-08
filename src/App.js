@@ -11,6 +11,7 @@ function App() {
   return (
     <Switch>
       {routes.map((route, i) => (
+        // console.log(i, '214234')
         <RouteWithSubRoutes key={i} {...route} />
       ))}
     </Switch>
