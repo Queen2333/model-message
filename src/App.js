@@ -1,6 +1,6 @@
 import React from 'react';
 import RouteWithSubRoutes from './router/routeWithSubRoutes';
-import { BrowserRouter as Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import routes from './router/routes'
 
 function App() {
@@ -9,12 +9,14 @@ function App() {
   //   window.location = `${href}pages`;
   // }
   return (
-    <Switch>
-      {routes.map((route, i) => (
-        // console.log(i, '214234')
-        <RouteWithSubRoutes key={i} {...route} />
-      ))}
-    </Switch>
+    <Router>
+      <Switch>
+        {routes.map((route, i) => (
+          // console.log(i, '214234')
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
+    </Router>
   );
 }
 
